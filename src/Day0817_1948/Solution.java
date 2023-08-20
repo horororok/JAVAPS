@@ -9,7 +9,7 @@ public class Solution {
 
 	public static void main(String[] args) throws FileNotFoundException {
 		// TODO Auto-generated method stub
-		System.setIn(new FileInputStream("src/Day0817_1948/input_1948.txt"));
+		//System.setIn(new FileInputStream("src/Day0817_1948/input_1948.txt"));
 		Scanner sc = new Scanner(System.in);
 
 		// 테스트 케이스 개수 입력

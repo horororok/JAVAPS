@@ -27,7 +27,6 @@ public class Main {
 					arr[i][j] = 1;
 				}
 			}
-
 		}
 		int cnt = 0;
 		for (int i = 0; i < 100; i++) {
@@ -37,9 +36,6 @@ public class Main {
 				}
 			}
 		}
-		
 		System.out.println(cnt);
-
 	}
-
 }

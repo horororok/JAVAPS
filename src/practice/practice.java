@@ -7,55 +7,41 @@ import java.util.Scanner;
 
 public class practice {
 
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) {
 		// System.setIn(new FileInputStream("src/Day0820_11315/input_11315.txt"));
 		Scanner sc = new Scanner(System.in);
 
-		// N*N행렬에 1부터 N*N까지 숫자를 채워준다
-		// 오른쪽 - 아래 - 왼쪽 - 위 순으로 진행하며
-		// 벽을 만나면 방향을 바꾼다
-		// 배열의 끝이거나, 이미 숫자가 채워져 있을 경우 방향 전환
-
-		// 테스트 케이스
-		int T = sc.nextInt();
-		for (int tc = 1; tc <= T; tc++) {
-
-			// N 입력
-			int N = sc.nextInt();
-
-			// 진행 방향
-			int dr[] = { 0, 1, 0, -1 };
-			int dc[] = { 1, 0, -1, 0 };
-
-			// 이차원 배열의 인덱스
-			int r = 0;
-			int c = 0;
-			// 진행방향 인덱스
-			int x = 0;
-
-			// 이차원 배열을 만들어줌
-			int arr[][] = new int[N][N];
-			// 배열 초기화
-			for (int i = 1; i <= N * N; i++) {
-				// 배열
-				arr[r][c] = i;
-
-				int newRow = r + dr[x];
-				int newCol = c + dc[x];
-				if (newRow >= N || newRow < 0 || newCol >= N || newCol < 0 || arr[newRow][newCol] != 0) {
-					x++;
-					x %= 4;
-				}
-				r = r+dr[x];		
-				c = c+dc[x];
-			}
-
-			System.out.println(Arrays.deepToString(arr));
-
-			// 벽을 만나면 방향을 바꾼다
-			// 경계조건
-
+		int[] xc = new int[3];
+		int[] yc = new int[3];
+		for (int tc = 0; tc < 3; tc++) {
+			int x = sc.nextInt();
+			xc[tc] = x;
+			int y = sc.nextInt();
+			yc[tc] = y;
 		}
+		int x1 = xc[0];
+		int y1 = yc[0];
+		int xans = 0;
+		int yans = 0;
+		if(xc[0] != xc[1] && xc[0] !=xc[2]) {
+			xans = xc[0]; 
+		}else if(xc[1] != xc[0] && xc[1] != xc[2]) {
+			xans = xc[1];
+		}else {
+			xans = xc[2];
+		}
+
+		if(yc[0] != yc[1] && yc[0] !=yc[2]) {
+			yans = yc[0]; 
+		}else if(yc[1] != yc[0] && yc[1] != yc[2]) {
+			yans = yc[1];
+		}else {
+			yans = yc[2];
+		}
+		
+		
+		System.out.printf("%d %d", xans, yans);
+
 	}
 
 }

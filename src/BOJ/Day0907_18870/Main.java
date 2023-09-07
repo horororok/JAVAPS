@@ -16,9 +16,22 @@ public class Main {
 			arr[i] = sc.nextLong();
 		}
 		
-		long arr2[] = arr.clone();
+		Arrays.sort(arr);
+		int idx = 0;
+		int ii = 0;
+		while(idx <N){
+			if(arr[idx] == arr[idx-1]) {
+				arr[idx] = ii;
+			}else {
+				arr[idx] = ii;
+				ii++;
+			}
+			idx++;
+		}
 		
-		Arrays.sort(arr2);
+		
+		
+		
 		
 		
 		

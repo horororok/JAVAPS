@@ -1,8 +1,8 @@
-package forA;
+package forA.BOJ17070_파이프옮기기;
 
 import java.util.Scanner;
 
-public class BOJ17070_파이프옮기기1 {
+public class Main {
 	public static void main(String[] args) {
 		
 		//x,y 까지 파이프를 이동시킬 수 있는 방법의 수 : dp[x][y][3] 

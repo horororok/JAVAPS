@@ -1,0 +1,15 @@
+dfs(V, E, R) {  # V : 정점 집합, E : 간선 집합, R : 시작 정점
+    visited[R] <- YES;  # 시작 정점 R을 방문 했다고 표시한다.
+    for each x ∈ E(R)  # E(R) : 정점 R의 인접 정점 집합.(정점 번호를 오름차순으로 방문한다)
+        if (visited[x] = NO) then dfs(V, E, x);
+}
+
+
+
+// G : 그래프, visited : 방문 배열
+DFS(v) {
+	visited[ v ] ← TRUE // v 방문 설정
+	FOR each all w in adjacency( G, v )
+		IF visited[w] ≠ TRUE
+			DFS(w)
+}

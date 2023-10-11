@@ -10,18 +10,17 @@ public class BFS_ajdList {
 
 	static int V, E;
 	static Queue<Integer> queue = new LinkedList<>();
-
 	static boolean[] visited = new boolean[V + 1];
-	static List<Integer>[] adjList = new ArrayList[V + 1];
+	static List<ArrayList<Integer>> adjList = new ArrayList<>();
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 
-		int V = sc.nextInt();
-		int E = sc.nextInt();
+		V = sc.nextInt();
+		E = sc.nextInt();
 
 		for (int i = 0; i < V + 1; i++) {
-			adjList[i] = new ArrayList<>();
+			adjList = new ArrayList<>();
 		}
 
 		for (int i = 0; i < E; i++) {
@@ -29,8 +28,8 @@ public class BFS_ajdList {
 			int B = sc.nextInt();
 			int w = sc.nextInt();
 
-			adjList[A].add(B);
-			adjList[B].add(A);
+			adjList.get(A).add(B);
+			adjList.get(B).add(A);
 		}
 
 		int startV = sc.nextInt();
@@ -42,11 +41,10 @@ public class BFS_ajdList {
 		visited[v] = true;
 
 		for (int i = 0; i < V + 1; i++) {
-			if (!visited[i] && adjList[v].get(i) != 0) {
+			if (!visited[i] && adjList.get(v).get(i) != 0) {
 				queue.add(i);
 				visited[i] = true;
 			}
 		}
-
 	}
 }

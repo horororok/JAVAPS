@@ -8,7 +8,7 @@ public class DFS_adjList {
 
     static int V, E;
     static boolean[] visited;
-    static List<Integer>[] adjList;
+    static List<ArrayList<Integer>> adjList;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -19,10 +19,9 @@ public class DFS_adjList {
         visited = new boolean[V + 1]; // 방문 배열 초기화
 
         // 인접 리스트
-        adjList = new ArrayList[V + 1];
-
+        adjList = new ArrayList<>();
         for (int i = 0; i < V + 1; i++) {
-            adjList[i] = new ArrayList<>();
+            adjList.add(new ArrayList<>());
         }
 
         // 간선 정보 입력
@@ -31,8 +30,8 @@ public class DFS_adjList {
             int B = sc.nextInt();
             int w = sc.nextInt();
 
-            adjList[A].add(B);
-            adjList[B].add(A); // 무향 그래프인 경우 필수
+            adjList.get(A).add(B);
+            adjList.get(B).add(A); // 무향 그래프인 경우 필수
         }
 
         int startV = sc.nextInt(); // 입력받거나 임의의 점 지정
@@ -43,7 +42,7 @@ public class DFS_adjList {
         visited[v] = true; // 방문처리
         System.out.println(v +1); // 출력
 
-        for (int neighbor : adjList[v]) {
+        for (int neighbor : adjList.get(v)) {
             // 방문하지 않았으면서 연결된 정점이 있다면 재귀호출
             if (!visited[neighbor]) {
                 DFS(neighbor);

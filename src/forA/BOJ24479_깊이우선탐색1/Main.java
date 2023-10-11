@@ -11,11 +11,10 @@ public class Main {
     // visited: 정점 방문 여부를 표시하는 배열
     // cnt: 방문 순서를 나타내는 변수
 
-	static ArrayList<ArrayList<Integer>> ajdList;
+	static ArrayList<ArrayList<Integer>> adjList;
 	static int[] nextNode;
 	static boolean[] visited;
 	static int cnt;
-	
 	
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -25,9 +24,9 @@ public class Main {
         int R = sc.nextInt(); // 시작 정점
 
         // 인접 리스트 초기화
-        ajdList = new ArrayList<>();
+        adjList = new ArrayList<>();
         for (int i = 0; i <= N; i++)
-            ajdList.add(new ArrayList<>());
+            adjList.add(new ArrayList<>());
 
         //인덱스와 정점번호 맞춰줌
         nextNode = new int[N + 1];
@@ -38,13 +37,13 @@ public class Main {
             int u = sc.nextInt();
             int v = sc.nextInt();
             //양쪽에 모두 넣어줌(무방향)
-            ajdList.get(u).add(v);
-            ajdList.get(v).add(u);
+            adjList.get(u).add(v);
+            adjList.get(v).add(u);
         }
         
         //오름차순 정렬
         for (int i = 1; i <= N; i++)
-            Collections.sort(ajdList.get(i));
+            Collections.sort(adjList.get(i));
 
         nextNode[R] = 1; // 시작 정점 방문 순서 설정
         visited[R] = true; // 시작 정점 방문 표시
@@ -61,7 +60,7 @@ public class Main {
 
     // 깊이 우선 탐색 (DFS) 함수
     public static void dfs(int R) {
-        for (int r : ajdList.get(R)) {
+        for (int r : adjList.get(R)) {
             if (!visited[r]) {
                 nextNode[r] = cnt++; // 다음 정점 방문 순서 설정
                 visited[r] = true; // 정점 방문 표시

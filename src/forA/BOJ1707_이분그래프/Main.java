@@ -1,11 +1,12 @@
 package forA.BOJ1707_이분그래프;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 	static int K, V, E;
-	static ArrayList<Integer> list[];
+	static List<ArrayList<Integer>> adjList;
 	static int visited[];
 	static String result = "";
 
@@ -17,19 +18,19 @@ public class Main {
 			result = ""; // 결과값 초기화
 			V = sc.nextInt(); // 정점의 개수 입력
 			E = sc.nextInt(); // 간선의 개수 입력
-			list = new ArrayList[V + 1];
-
-			for (int j = 1; j <= V; j++) {
-				list[j] = new ArrayList<>();
+			
+			adjList = new ArrayList<>();
+			for (int j = 0; j <= V; j++) {
+				adjList.add(new ArrayList<>());
 			}
 
 			visited = new int[V + 1];
 
-			for (int k = 1; k <= E; k++) {
+			for (int k = 0; k < E; k++) {
 				int s = sc.nextInt();
 				int e = sc.nextInt();
-				list[s].add(e);
-				list[e].add(s);
+				adjList.get(s).add(e);
+				adjList.get(e).add(s);
 			}
 
 			boolean ans = true;
@@ -49,7 +50,7 @@ public class Main {
 	static boolean DFS(int node, int color) {
 		visited[node] = color;
 
-		for (int v : list[node]) {
+		for (int v : adjList.get(node)) {
 			if (visited[v] == 0) {
 				DFS(v, color * -1); // 다음 노드를 반대 색으로 칠하고 DFS 호출
 			} else if (visited[v] == visited[node]) {

@@ -51,7 +51,6 @@ public class MergeSort {
 	}
 
 	private static void merge(int[] arr, int l, int m, int r) {
-		// TODO Auto-generated method stub
 		// arr은 그대로두고
 		// 합칠 구간만 복사본을 만들어 두고
 		// 왼쪽 배열-> L / 왼쪽 배열의 길이 -> n1
@@ -87,11 +86,11 @@ public class MergeSort {
 		}
 
 		// 옮기기만 하면 되는 경우
-		for (; i < n1; i++) {
+		for (i = 0; i < n1; i++) {
 			arr[k++] = L[i];
 		}
 
-		for (; j < n2; j++) {
+		for (j = 0 ; j < n2; j++) {
 			arr[k++] = R[j];
 		}
 	}
